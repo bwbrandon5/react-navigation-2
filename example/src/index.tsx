@@ -23,7 +23,6 @@ import { createURL } from 'expo-linking';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 import {
-  I18nManager,
   Linking,
   Platform,
   ScrollView,
@@ -40,7 +39,6 @@ import {
 } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { restartApp } from './Restart';
 import { RootDrawerParamList, RootStackParamList, SCREENS } from './screens';
 import { NotFound } from './Screens/NotFound';
 import { SettingsItem } from './Shared/SettingsItem';
@@ -62,6 +60,8 @@ export function App() {
   const [initialState, setInitialState] = React.useState<
     InitialState | undefined
   >();
+
+  const [isRTL, setIsRTL] = React.useState(false);
 
   React.useEffect(() => {
     const restoreState = async () => {
@@ -239,12 +239,9 @@ export function App() {
                       <SafeAreaView edges={['right', 'bottom', 'left']}>
                         <SettingsItem
                           label="Right to left"
-                          value={I18nManager.getConstants().isRTL}
+                          value={isRTL}
                           onValueChange={() => {
-                            I18nManager.forceRTL(
-                              !I18nManager.getConstants().isRTL
-                            );
-                            restartApp();
+                            setIsRTL((rtl) => !rtl);
                           }}
                         />
                         <Divider />

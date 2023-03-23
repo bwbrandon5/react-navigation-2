@@ -10,5 +10,6 @@ export { useTheme } from './theming/useTheme';
 export * from './types';
 export { useLinkProps } from './useLinkProps';
 export { useLinkTools } from './useLinkTools';
+export { useLocaleDir } from './useLocaleDir';
 export { useScrollToTop } from './useScrollToTop';
 export * from '@react-navigation/core';

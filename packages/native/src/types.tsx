@@ -6,6 +6,8 @@ import type {
   Route,
 } from '@react-navigation/core';
 
+export type LocaleDir = 'ltr' | 'rtl';
+
 type FontStyle = {
   fontFamily: string;
   fontWeight:
